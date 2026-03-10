@@ -81,6 +81,7 @@ nav a:hover{color:var(--gold)}
 .product-card{background:var(--bg);overflow:hidden;transition:transform .25s;position:relative}
 .product-card:hover{transform:translateY(-4px);z-index:2;box-shadow:var(--shadow)}
 .product-img{height:220px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;position:relative;overflow:hidden}
+.product-img img{width:100%;height:100%;object-fit:cover;display:block}
 .product-body{padding:22px}
 .product-tag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:10px}
 .tag-vela{background:rgba(168,120,42,.1);color:var(--gold);border:1px solid rgba(168,120,42,.25)}
@@ -138,10 +139,12 @@ nav a:hover{color:var(--gold)}
 .frag-item{background:var(--bg);padding:22px 18px;transition:background .2s}
 .frag-item:hover{background:var(--cream)}
 .frag-dot{width:34px;height:34px;border-radius:50%;margin-bottom:10px;border:2px solid rgba(255,255,255,.5);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.frag-img{width:100%;height:110px;object-fit:cover;margin-bottom:12px;display:block}
 .frag-name{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:600;color:var(--warm);margin-bottom:5px}
 .frag-desc{font-size:.72rem;color:var(--muted);line-height:1.5}
 
-/* CART DRAWER */
+.logo-img{height:38px;width:auto;vertical-align:middle;margin-right:8px}
+.livro-capa img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.35}
 .cart-overlay{position:fixed;inset:0;background:rgba(26,18,8,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
 .cart-overlay.open{opacity:1;pointer-events:all}
 .cart-drawer{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:var(--bg);z-index:301;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(26,18,8,.15)}
@@ -234,7 +237,7 @@ footer{background:var(--dark);padding:44px 5vw 24px}
 <div class="announce">✦ Velas energizadas · Quadros Arquétipos · Livros de Diego Lira ✦</div>
 
 <header>
-  <a href="#" class="logo">Frequência <em>Positiva</em></a>
+  <a href="#" class="logo"><img src="images/logo.jpg" alt="Frequência Positiva" class="logo-img">Frequência <em>Positiva</em></a>
   <nav>
     <a href="#loja">Loja</a>
     <a href="#quadros">Quadros</a>
@@ -259,8 +262,9 @@ footer{background:var(--dark);padding:44px 5vw 24px}
       <a href="#livros" class="btn-outline">Livros</a>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-card">
+  <div class="hero-right" style="background:#1A1208">
+    <img src="images/hero.gif" alt="Frequência Positiva" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">
+    <div class="hero-card" style="position:relative;z-index:2">
       <div class="hero-card-icon">🕯️</div>
       <h3>Frequência Positiva</h3>
       <p>Produtos criados com intenção, arte e conhecimento espiritual para transformar ambientes e elevar a vibração.</p>
@@ -408,20 +412,22 @@ footer{background:var(--dark);padding:44px 5vw 24px}
 const WA = '5511992137770';
 
 const FRAGRANCES = [
-  {id:'alecrim',name:'Alecrim Purificante',color:'#7A9B6B',benefit:'Purificação e desobsessão energética'},
-  {id:'coconut',name:'Coconut Passion',color:'#D4956A',benefit:'Combate tristeza, traz alegria e leveza'},
-  {id:'vanilla',name:'Vanilla Daslu',color:'#C4A06A',benefit:'Autoestima e atmosfera aconchegante'},
-  {id:'bamboo',name:'Bamboo Dreams',color:'#8FB5A0',benefit:'Renovação e purificação do ambiente'},
-  {id:'lavanda',name:'Lavanda Provence',color:'#9B8EC4',benefit:'Relaxamento profundo e paz interior'},
-  {id:'capim',name:'Capim Limão',color:'#B5C46A',benefit:'Leveza, clareza mental e energia positiva'},
-  {id:'orquidea',name:'Orquídea Negra',color:'#8B5E8E',benefit:'Sofisticação e equilíbrio emocional'},
-  {id:'maca',name:'Maçã com Canela',color:'#C47050',benefit:'Acolhimento, conforto e proteção'}
+  {id:'alecrim',name:'Alecrim Purificante',img:'images/frag-alecrim.jpg',benefit:'Harmonização de ambientes e desobsessão'},
+  {id:'bamboo',name:'Bamboo Dreams',img:'images/frag-bamboo.jpg',benefit:'Harmonização e elevação da energia'},
+  {id:'capim',name:'Capim Limão',img:'images/frag-capim.jpg',benefit:'Diminui a ansiedade, o estresse e harmoniza'},
+  {id:'coconut',name:'Coconut Passion',img:'',benefit:'Para tristeza e melancolia — ajuda a rejuvenescer e alegrar'},
+  {id:'lavanda',name:'Lavanda Provence',img:'images/frag-lavanda.jpg',benefit:'Ajuda a acalmar, desestressar e elevar as energias'},
+  {id:'maca',name:'Maçã com Canela',img:'images/frag-maca-canela.jpg',benefit:'Purifica, harmoniza e atrai prosperidade'},
+  {id:'orquidea',name:'Orquídea Negra',img:'images/frag-orquidea.jpg',benefit:'Desobsessão, abre caminhos, atrai prosperidade e melhora a vida financeira'},
+  {id:'vanilla',name:'Vanilla Daslu',img:'images/frag-vanilla.jpg',benefit:'Armoniza, aumenta a autoestima, vitalidade e melhora a alegria'}
 ];
 
 const VELAS = [
-  {id:'vela-p',name:'Vela Energizada P',desc:'Vela pequena artesanal com cera vegetal premium. Ideal para ambientes menores ou presente.',price:39.90,icon:'🕯️',tag:'tag-vela',tagLabel:'Vela · 80g',hasFrag:true},
-  {id:'vela-m',name:'Vela Energizada M',desc:'Vela média artesanal. Maior durabilidade e presença energética no ambiente.',price:54.90,icon:'🕯️',tag:'tag-vela',tagLabel:'Vela · 200g',hasFrag:true},
-  {id:'vela-g',name:'Vela Energizada G',desc:'Vela grande para ambientes amplos. Perfume intenso e longa queima energizante.',price:74.90,icon:'🕯️',tag:'tag-vela',tagLabel:'Vela · 350g',hasFrag:true}
+  {id:'vela-p',name:'Vela Energizada P',desc:'Vela pequena artesanal com cera vegetal premium. Ideal para ambientes menores ou presente.',price:39.90,img:'images/vela-pote-p2.jpg',tag:'tag-vela',tagLabel:'Vela · 80g',hasFrag:true},
+  {id:'vela-m',name:'Vela Energizada M',desc:'Vela média artesanal. Maior durabilidade e presença energética no ambiente.',price:54.90,img:'images/vela-copo.jpg',tag:'tag-vela',tagLabel:'Vela · 200g',hasFrag:true},
+  {id:'vela-g',name:'Vela Energizada G',desc:'Vela grande para ambientes amplos. Perfume intenso e longa queima energizante.',price:74.90,img:'images/vela-quadrada.jpg',tag:'tag-vela',tagLabel:'Vela · 350g',hasFrag:true},
+  {id:'vela-lata',name:'Vela em Lata',desc:'Vela artesanal em lata decorada. Design exclusivo, presente perfeito para elevar qualquer ambiente.',price:49.90,img:'images/vela-lata.jpg',tag:'tag-vela',tagLabel:'Vela · Lata',hasFrag:true},
+  {id:'vela-cristais',name:'Vela Premium com Cristais',desc:'Vela energizada com cristais naturais selecionados. Potencializa a intenção e eleva a frequência do ambiente. Edição especial.',price:89.90,img:'images/vela-cristais.jpg',tag:'tag-vela',tagLabel:'Vela · Premium · Cristais',hasFrag:true}
 ];
 
 const QUADROS = [
@@ -468,7 +474,9 @@ const LIVROS = [
 function renderVelas(){
   document.getElementById('velasGrid').innerHTML = VELAS.map(p=>`
     <div class="product-card">
-      <div class="product-img" style="background:linear-gradient(135deg,#F0EBE1,#E8E0D2)">${p.icon}</div>
+      <div class="product-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="product-tag ${p.tag}">${p.tagLabel}</span>
         <h3 class="product-name">${p.name}</h3>
@@ -545,7 +553,7 @@ function renderLivros(){
 function renderFragrances(){
   document.getElementById('fragGrid').innerHTML = FRAGRANCES.map(f=>`
     <div class="frag-item">
-      <div class="frag-dot" style="background:${f.color}"></div>
+      ${f.img ? `<img src="${f.img}" alt="${f.name}" class="frag-img" loading="lazy">` : `<div class="frag-dot" style="background:#D4956A"></div>`}
       <div class="frag-name">${f.name}</div>
       <div class="frag-desc">${f.benefit}</div>
     </div>`).join('');
@@ -562,7 +570,7 @@ function addToCart(type, pid){
     const sel=document.getElementById(`frag-${pid}`);
     frag=sel?sel.value:'';
     if(!frag){showToast('⚠️ Escolha uma fragrância primeiro');sel.style.borderColor='#C09080';setTimeout(()=>sel.style.borderColor='',2000);return;}
-    name=p.name; price=p.price; icon=p.icon;
+    name=p.name; price=p.price; icon='🕯️';
     if(sel)sel.value='';
   } else if(type==='quadro'){
     const p=QUADROS.find(x=>x.id===pid);
