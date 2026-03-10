@@ -35,8 +35,8 @@ nav a:hover{color:var(--gold)}
 .cart-badge.pop{transform:scale(1.5)}
 
 /* HERO */
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;overflow:hidden}
-.hero-left{background:var(--dark);display:flex;flex-direction:column;justify-content:center;padding:10vw 7vw 10vw 9vw;position:relative;overflow:hidden}
+.hero{display:flex;flex-direction:column;min-height:88vh;overflow:hidden}
+.hero-left{background:var(--dark);display:flex;flex-direction:column;justify-content:center;padding:7vw 9vw;position:relative;overflow:hidden}
 .hero-left::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(168,120,42,.12) 0%,transparent 70%);top:-80px;right:-80px;pointer-events:none}
 .hero-eyebrow{font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px}
 .hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
@@ -48,8 +48,7 @@ nav a:hover{color:var(--gold)}
 .btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 8px 28px rgba(168,120,42,.35)}
 .btn-outline{display:inline-flex;align-items:center;background:transparent;color:var(--bg);border:1px solid rgba(250,248,244,.2);padding:14px 28px;font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .25s}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.hero-right{background:var(--bg2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero-right::before{content:'○';font-size:30rem;position:absolute;color:rgba(168,120,42,.04);font-family:serif;line-height:1;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hero-right{width:100%;height:55vh;overflow:hidden;display:block}
 .hero-card{background:var(--bg);border:1px solid var(--border);padding:44px 36px;text-align:center;width:300px;position:relative;box-shadow:var(--shadow)}
 .hero-card::before{content:'✦';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 8px;color:var(--gold);font-size:.9rem}
 .hero-card-icon{font-size:2.8rem;margin-bottom:16px}
@@ -259,10 +258,9 @@ footer{background:var(--dark);padding:44px 5vw 24px}
     <p class="hero-desc">Velas energizadas, quadros arquétipos de animais e livros de Diego Lira. Tudo para elevar a frequência do seu espaço e expandir sua consciência.</p>
     <div class="hero-btns">
       <a href="#loja" class="btn-gold">Ver produtos →</a>
-      <a href="#livros" class="btn-outline">Livros</a>
     </div>
   </div>
-  <div class="hero-right" style="background:#1A1208;padding:0">
+  <div class="hero-right">
     <img src="images/hero.gif" alt="Frequência Positiva" style="width:100%;height:100%;object-fit:cover;display:block">
   </div>
 </section>
@@ -405,7 +403,7 @@ const FRAGRANCES = [
   {id:'alecrim',name:'Alecrim Purificante',img:'images/frag-alecrim.jpg',benefit:'Harmonização de ambientes e desobsessão'},
   {id:'bamboo',name:'Bamboo Dreams',img:'images/frag-bamboo.jpg',benefit:'Harmonização e elevação da energia'},
   {id:'capim',name:'Capim Limão',img:'images/frag-capim.jpg',benefit:'Diminui a ansiedade, o estresse e harmoniza'},
-  {id:'coconut',name:'Coconut Passion',img:'',benefit:'Para tristeza e melancolia — ajuda a rejuvenescer e alegrar'},
+  {id:'coconut',name:'Coconut Passion',img:'images/frag-coconut.jpg',benefit:'Para tristeza e melancolia — ajuda a rejuvenescer e alegrar'},
   {id:'lavanda',name:'Lavanda Provence',img:'images/frag-lavanda.jpg',benefit:'Ajuda a acalmar, desestressar e elevar as energias'},
   {id:'maca',name:'Maçã com Canela',img:'images/frag-maca-canela.jpg',benefit:'Purifica, harmoniza e atrai prosperidade'},
   {id:'orquidea',name:'Orquídea Negra',img:'images/frag-orquidea.jpg',benefit:'Desobsessão, abre caminhos, atrai prosperidade e melhora a vida financeira'},
@@ -433,28 +431,31 @@ const LIVROS = [
   {
     id:'7linhas',
     titulo:'As 7 Linhas desse Universo',
-    subtitulo:'As várias emanações divinas',
+    subtitulo:'As várias formas da emanação divina',
+    capa:'images/livro-7linhas.jpg',
+    contracapa:'Há uma corda tecida com sete linhas vibracionais e místicas. Onde o maestro divino conduz uma sinfonia colossal e harmoniosa. Ressoando por todo o universo e manifestando desde o macro ao micro. Ondas que viajam o espaço e o tempo. Levando e transbordando o infinito amor divino. Esse livro conta a interpretação desses povos, e como eles tentaram decifrar os caminhos de Deus.',
     sinopse:'O número sete atravessa mitos, religiões e ciências como um código oculto: sete chakras, sete arcanjos, sete orixás. Diego Lira investiga esse padrão universal que une espiritualidade, filosofia e ciência — do Hinduísmo à Umbanda, mostrando que todas as tradições descrevem as mesmas sete forças inteligentes que moldam a matéria, a energia e a consciência.',
     paginas:'145 páginas',
     ano:'2025',
     cat:'Filosofia · Espiritualidade',
     precoImpresso:'R$ 60,03',
-    icon:'📖',
+    precoEbook:'R$ 35,00',
     linkClube:'https://clubedeautores.com.br/livro/as-7-linhas-desse-universo',
     linkUiclap:'https://loja.uiclap.com/titulo/ua125819',
-    temEbook:false
+    temEbook:true
   },
   {
     id:'caminho',
     titulo:'O Caminho da Terra para o Céu',
     subtitulo:'Saindo do corpo',
-    sinopse:'Entre as raízes ocultas da terra e o chamado silencioso do céu, existe um caminho que poucos ousam trilhar. Uma narrativa profunda baseada em fatos reais, onde forças invisíveis moldam escolhas, emoções e destinos. Um convite a reconhecer padrões presentes em sua vida — nas memórias, nos sonhos, nos encontros inesperados.',
+    capa:'images/livro-caminho.jpg',
+    contracapa:'Entre o corpo que repousa e a alma que desperta, ergue-se um caminho secreto. Este romance, inspirado em fatos reais, conta a jornada de um homem que, ao adormecer, atravessa fronteiras invisíveis e descobre a existência de reinos celestiais. Sem revelar segredos, a narrativa guia o leitor por um enredo de emoção, mistério e espiritualidade, onde cada página convida a olhar além do visível. Mais do que uma história, é um convite: descobrir que o trajeto da terra ao céu começa no silêncio da própria noite.',
+    sinopse:'Uma narrativa profunda baseada em fatos reais, onde forças invisíveis moldam escolhas, emoções e destinos. Um convite a reconhecer padrões presentes em sua vida — nas memórias, nos sonhos, nos encontros inesperados.',
     paginas:'104 páginas',
     ano:'2025',
     cat:'Espiritualidade · Batalha Espiritual',
     precoImpresso:'R$ 58,16',
     precoEbook:'R$ 33,44',
-    icon:'📚',
     linkClube:'https://clubedeautores.com.br/livro/o-caminho-da-terra-para-o-ceu',
     linkUiclap:'https://loja.uiclap.com/titulo/ua113777',
     temEbook:true
@@ -508,11 +509,7 @@ function renderLivros(){
   document.getElementById('livrosGrid').innerHTML = LIVROS.map(l=>`
     <div class="livro-card">
       <div class="livro-capa">
-        <div class="livro-capa-inner">
-          <span class="livro-icon">${l.icon}</span>
-          <div class="livro-titulo">${l.titulo}</div>
-          <div class="livro-subtitulo">${l.subtitulo}</div>
-        </div>
+        <img src="${l.capa}" alt="${l.titulo}" style="width:100%;height:100%;object-fit:cover;display:block">
       </div>
       <div class="livro-body">
         <div class="livro-meta">
@@ -521,6 +518,10 @@ function renderLivros(){
           <span class="livro-badge badge-cat">${l.cat}</span>
         </div>
         <p class="livro-sinopse">${l.sinopse}</p>
+        <details style="margin-bottom:16px">
+          <summary style="font-size:.78rem;color:var(--gold);cursor:pointer;letter-spacing:.05em">Ler contracapa ▾</summary>
+          <p style="font-size:.8rem;color:var(--muted);line-height:1.75;margin-top:10px;font-style:italic;border-left:2px solid var(--border);padding-left:12px">${l.contracapa}</p>
+        </details>
         <div class="livro-preco-row">
           <div class="livro-preco"><small>impresso</small>${l.precoImpresso}</div>
           <div class="livro-btns">
@@ -529,14 +530,13 @@ function renderLivros(){
           </div>
         </div>
       </div>
-      ${l.temEbook ? `
       <div class="livro-ebook-box">
         <span><strong>Ebook</strong> — ${l.precoEbook} — direto com o autor</span>
-        <a class="btn-link btn-wa" href="https://wa.me/${WA}?text=Olá!%20Quero%20comprar%20o%20ebook%20de%20${encodeURIComponent(l.titulo)}." target="_blank">
+        <a class="btn-link btn-wa" href="https://wa.me/${WA}?text=Olá!%20Quero%20comprar%20o%20ebook%20*${encodeURIComponent(l.titulo)}*%20por%20${encodeURIComponent(l.precoEbook)}." target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          Ebook WhatsApp
+          Comprar Ebook
         </a>
-      </div>` : ''}
+      </div>
     </div>`).join('');
 }
 
